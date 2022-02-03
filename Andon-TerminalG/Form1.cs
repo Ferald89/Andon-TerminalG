@@ -249,11 +249,13 @@ namespace Andon_TerminalG
             // Create array Byte from beginer
             Byte[] begginerByte  = BitConverter.GetBytes(beginer);
             HEADER[12] = memory; // Memory located in byte 12
+
             // Create message
             Byte[] message = new Byte[HEADER.Length + begginerByte.Length + COUNT.Length];
             Buffer.BlockCopy(HEADER, 0, message, 0, HEADER.Length);
             Buffer.BlockCopy(begginerByte, 0, message, HEADER.Length, begginerByte.Length);
             Buffer.BlockCopy(COUNT, 0, message, HEADER.Length + begginerByte.Length, COUNT.Length);
+
             //Console.WriteLine(BitConverter.ToString(message));
             try
             {
